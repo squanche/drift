@@ -29,15 +29,9 @@ public class RedisConfiguration {
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
-
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-
-        // 在使用注解@Bean返回RedisTemplate的时候，同时配置hashKey与hashValue的序列化方式。
-        // key采用String的序列化方式
         template.setKeySerializer(stringRedisSerializer);
-        // value序列化方式采用jackson
         template.setValueSerializer(jackson2JsonRedisSerializer);
-
         // hash的key也采用String的序列化方式
         template.setHashKeySerializer(stringRedisSerializer);
         // hash的value序列化方式采用jackson
