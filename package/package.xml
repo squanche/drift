@@ -120,3 +120,4 @@
     </dependencySets>
 
 </assembly>
+<!--> java -cp  ./*.jar:./config:./lib/*  com.example.redis.RedisApplication <-->
